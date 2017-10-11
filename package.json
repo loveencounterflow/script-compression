@@ -1,0 +1,17 @@
+{
+  "name": "script-compression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "coffee --map -o lib -c src",
+    "test": "npm run build && tap lib/tests"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cnd": "^4.3.1",
+    "hangul-tools": "^0.1.4",
+    "pipestreams": "^0.3.5"
+  }
+}
