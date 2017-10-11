@@ -218,3 +218,27 @@ for text in texts
 # d = 'ᅡㅏ'
 # debug ( ( chr.codePointAt 0 ).toString 16 for chr in Array.from decompose_hangeul d )
 
+
+texts =
+  en:   """All human beings are born free and equal in dignity and rights. They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood."""
+  cns: """人人生而自由,在尊严和权利上一律平等。他们赋有理性和良心,并应以兄弟关系的精神相对待。"""
+  fin: """Kaikki ihmiset syntyvät vapaina ja tasavertaisina arvoltaan ja oikeuksiltaan. Heille on annettu järki ja omatunto, ja heidän on toimittava toisiaan kohtaan veljeyden hengessä."""
+  kor: """모든 인간은 태어날 때부터 자유로우며 그 존엄과 권리에 있어 동등하다. 인간은 천부적으로 이성과 양심을 부여받았으며 서로 형제애의 정신으로 행동하여야 한다."""
+  jpn: """すべての人間は、生まれながらにして自由であり、かつ、尊厳と権利と について平等である。人間は、理性と良心とを授けられており、互いに同 胞の精神をもって行動しなければならない。"""
+
+
+for language_marker, original_text of texts
+  ### dcp: distinct code points ###
+  original_chrs           = Array.from original_text
+  original_length         = original_chrs.length
+  original_dcp_count      = ( new Set original_chrs ).size
+  transcoded_chrs         = decompose_hangeul original_text
+  transcoded_length       = transcoded_chrs.length
+  transcoded_dcp_count    = ( new Set transcoded_chrs ).size
+  transcoded_text         = transcoded_chrs.join ''
+  help "characters:   ", original_length,     '->', transcoded_length
+  help "distinct CPs: ", original_dcp_count,  '->', transcoded_dcp_count
+  help original_text
+  help transcoded_text
+
+
